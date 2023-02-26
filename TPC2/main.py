@@ -1,8 +1,15 @@
 def removeMenos(num):
-    res = ""
-    for i in num:
-        if i != "-":
-            res = res + i
+    fs = ""
+    sc = ""
+    i = 0
+    while num[i] != "-":
+        fs = fs + num[i]
+        i += 1
+    i += 1
+    while i < len(num):
+        sc = sc + num[i]
+        i += 1
+    res = int(fs)-int(sc)
     return res
 
 def main():
@@ -12,15 +19,15 @@ def main():
     texto = input("Insira um texto: ")
     print("\n")
 
-    for i in range(0,len(texto)):
+    for i in range(0, len(texto)):
         if texto[i] != "=":
             if On:
-                if texto[i].isdigit() or texto[i]== "-" and texto[i+1].isdigit():
+                if texto[i].isdigit() or texto[i] == "-" and texto[i+1].isdigit():
                     num = num + texto[i]
                 else:
                     if "-" in num: 
                      aux = removeMenos(num)
-                     count -= int(aux)
+                     count += int(aux)
                      num = "0"
                     else:
                         count += int(num)
@@ -33,7 +40,7 @@ def main():
         else:
             if "-" in num:
                 aux = removeMenos(num) 
-                count -= int(aux)
+                count += int(aux)
                 num = "0"
             else:
                 count += int(num)
