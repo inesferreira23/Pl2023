@@ -74,7 +74,7 @@ def procRelacao(relacao):
         relacoes = re.findall(r',[aA-zZ]*[ ]*[aA-zZ]*\.', extra)
         
         for rel in relacoes:
-            if ","+relacao+"." == rel:
+            if relacao in rel:
                 freqRelacao += 1
             
     print(f"Relação:{relacao}    Frequencia:{freqRelacao}")
