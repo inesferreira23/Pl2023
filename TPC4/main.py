@@ -17,7 +17,7 @@ def csv_to_json():
             if len(existe_funcao) > 1:
                 funcao = existe_funcao[2]
         
-        
+
         for line in dataset[1:]:
             lista = []
             linha = line.strip().split(',')
