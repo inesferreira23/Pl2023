@@ -3,32 +3,35 @@ from sys import stdin
 
 def calculaTroco(saldo):
     troco = {"5c":0, "10c":0,"20c":0,"50c":0,"1e":0,"2e":0}
-    while saldo >= 0.005:
-        if saldo >= 2:
-            troco["2e"] +=1
-            saldo = round(saldo-2, 2)
-        elif saldo >= 1:
-            troco["1e"] +=1
-            saldo = round(saldo-1, 2)
-        elif saldo >= 0.5:
-            troco["50c"] +=1
-            saldo = round(saldo-0.5, 2)
-        elif saldo >= 0.2:
-            troco["20c"] += 1
-            saldo = round(saldo-0.2, 2)
-        elif saldo >= 0.1:
-            troco["10c"] += 1
-            saldo = round(saldo-0.1, 2)
-        elif saldo >= 0.05:
-            troco["5c"] +=1
-            saldo = round(saldo-0.05, 2)
-        else:
-            print("Inválido")
-            break
-    string = ""
-    for moeda in troco.keys():
-        if troco[moeda] != 0:
-            string += str(troco[moeda]) + "x" + moeda + ","
+    if saldo == 0:
+        string = "0,"
+    else:
+        while saldo >= 0.005:
+            if saldo >= 2:
+                troco["2e"] +=1
+                saldo = round(saldo-2, 2)
+            elif saldo >= 1:
+                troco["1e"] +=1
+                saldo = round(saldo-1, 2)
+            elif saldo >= 0.5:
+                troco["50c"] +=1
+                saldo = round(saldo-0.5, 2)
+            elif saldo >= 0.2:
+                troco["20c"] += 1
+                saldo = round(saldo-0.2, 2)
+            elif saldo >= 0.1:
+                troco["10c"] += 1
+                saldo = round(saldo-0.1, 2)
+            elif saldo >= 0.05:
+                troco["5c"] +=1
+                saldo = round(saldo-0.05, 2)
+            else:
+                print("Inválido")
+                break
+        string = ""
+        for moeda in troco.keys():
+            if troco[moeda] != 0:
+                string += str(troco[moeda]) + "x" + moeda + ","
     return string
 
 def main():
@@ -46,7 +49,7 @@ def main():
                 saldo = 0
                 break
             
-            if opcao == "LEVANTAR\n":
+            if opcao == "LEVANTAR\n" and flag == False:
                 flag = True
                 moedas = print("Introduza moedas:\n")
             
